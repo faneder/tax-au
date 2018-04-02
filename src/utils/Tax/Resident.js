@@ -7,6 +7,11 @@ import Tax from './Tax';
 export default class Resident extends Tax {
     constructor(options) {
         super(options);
+
+        super.setMedicare('yes');
+
+        this.lowerIncome = 445;
+        this.lowerIncomeRate = 0.015;
     }
 
     getTaxRate() {
@@ -30,5 +35,19 @@ export default class Resident extends Tax {
         }
 
         return this.taxRate;
+    }
+
+    get taxRefund() {
+        return super.formatTaxNumber(super.taxRefund + this.getLowerIncomeTax());
+    }
+
+    getLowerIncomeTax() {
+        if (this.income <= 37000) {
+            return -this.lowerIncome;
+        } else if (this.income >= 37001 && this.income <= 66667) {
+            return this.lowerIncome - ((this.income - 37000) * this.lowerIncomeRate);
+        }
+
+        return 0;
     }
 }
