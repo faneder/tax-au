@@ -11,6 +11,8 @@ export default class Tax {
 
         this.income = options.income;
 	    this.type = options.type;
+	    this.taxWithhold = this.formatTaxNumber(options.taxWithhold) || 0;
+	    this.workExpenses = this.formatTaxNumber(options.workExpenses) || 0; // OTHER WORK RELATED EXPENSES
 	    this.medicareRate = 0.02;
 	    this.medicare = 0;
 	    this.taxBase = 0;
@@ -33,7 +35,7 @@ export default class Tax {
 	 * calculator tax refund
 	 */
 	get taxRefund() {
-		return this.formatTaxNumber(this.getTax + this.medicare);
+		return this.formatTaxNumber(this.taxWithhold - (this.getTax + this.medicare));
 	}
 
 	/**
@@ -57,13 +59,19 @@ export default class Tax {
     	return this.medicare;
     }
 
+    taxableIncome() {
+    	return this.income - this.workExpenses;
+    }
+
 	calcTax() {
 	    this.getTaxRate();
 
-		return this.formatTaxNumber(this.taxPlus + ((this.income - this.taxBase) * this.taxRate));
+		return this.formatTaxNumber(this.taxPlus + ((this.taxableIncome() - this.taxBase) * this.taxRate));
   	}
 
   	formatTaxNumber(num) {
-		return (num > 0) ? Math.floor(num * 100) / 100 : 0;
+  		num = parseFloat(num);
+
+		return Math.floor(num * 100) / 100;
   	}
 }

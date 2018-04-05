@@ -38,16 +38,18 @@ export default class Resident extends Tax {
     }
 
     get taxRefund() {
-        return super.formatTaxNumber(super.taxRefund + this.getLowerIncomeTax());
+        return super.taxRefund + this.getLowerIncomeTax();
     }
 
     getLowerIncomeTax() {
-        if (this.income <= 37000) {
-            return -this.lowerIncome;
+        let lowerTax = 0;
+
+        if (this.income > 445 && this.income <= 37000) {
+            lowerTax = -this.lowerIncome;
         } else if (this.income >= 37001 && this.income <= 66667) {
-            return this.lowerIncome - ((this.income - 37000) * this.lowerIncomeRate);
+            lowerTax = this.lowerIncome - ((this.income - 37000) * this.lowerIncomeRate);
         }
 
-        return 0;
+        return lowerTax;
     }
 }

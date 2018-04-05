@@ -91,9 +91,8 @@ describe('Resident', () => {
 			    type: "resident",
 			    income: 37000,
 			});
-			tax.setMedicare('yes');
 
-			expect(tax.taxRefund).toBe(3867);
+			expect(tax.getLowerIncomeTax()).toBe(-445);
 		});
 
 		test('if your taxable income is between $37,001 – $66,667, tax should be $445 – [(taxable income – $37,000) x 1.5%]', () => {
@@ -116,5 +115,39 @@ describe('Resident', () => {
 			expect(tax.taxRefund).toBe(0);
 		});
 	});
-});
 
+	describe('tax withhold exemption from your pay', () => {
+		test('tax withhold is lower than you must pay', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 70000,
+			    taxWithhold: 2000
+			});
+			tax.setMedicare('no');
+
+			expect(tax.taxRefund).toBe(-12297);
+		});
+
+		test('tax withhold is heigher than you must pay', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 70000,
+			    taxWithhold: 20000
+			});
+			tax.setMedicare('no');
+
+			expect(tax.taxRefund).toBe(5703);
+		});
+	});
+
+	test('deduction other work related expenses', () => {
+		const tax = TaxFactory.create({
+		    type: "resident",
+		    income: 70000,
+		    workExpenses: 300
+		});
+		tax.setMedicare('no');
+
+		expect(tax.taxableIncome()).toBe(69700);
+	});
+});
