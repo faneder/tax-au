@@ -70,8 +70,6 @@ export default class Tax {
   	}
 
   	formatTaxNumber(num) {
-  		num = parseFloat(num);
-
-		return Math.floor(num * 100) / 100;
+		return Math.floor(parseFloat(num) * 100) / 100;
   	}
 }
