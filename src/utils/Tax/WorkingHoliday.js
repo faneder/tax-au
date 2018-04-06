@@ -20,12 +20,10 @@ export default class WorkingHoliday extends Tax {
 			this.taxRate = 0.37;
 			this.taxBase = 87000;
 			this.taxPlus = 21800;
-		} else if (this.income >= 180001) {
+		} else {
 			this.taxRate = 0.45;
 			this.taxBase = 180000;
 			this.taxPlus = 56210;
 		}
-
-        return this.taxRate;
     }
 }

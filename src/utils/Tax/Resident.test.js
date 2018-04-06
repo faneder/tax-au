@@ -1,6 +1,16 @@
 import TaxFactory from './TaxFactory';
+import Tax from './Tax';
 
 describe('Resident', () => {
+	test('throw an error when factory type is unknown', () => {
+		expect(() => {
+			const tax = TaxFactory.create({
+			    type: ""
+			});
+
+		}).toThrow();
+	});
+
 	test('when income is 10000, tax should be Nil', () => {
 		const tax = TaxFactory.create({
 		    type: "resident",
@@ -83,6 +93,17 @@ describe('Resident', () => {
 
 			expect(tax.getMedicare).toBe(0);
 		});
+
+		test('throw an error when type is wrong', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 40000,
+			});
+
+			expect(() => {
+				tax.setMedicare('test');
+			}).toThrow();
+		});
 	});
 
 	describe('lower income levy reduced or exemption', () => {
@@ -149,5 +170,54 @@ describe('Resident', () => {
 		tax.setMedicare('no');
 
 		expect(tax.taxableIncome()).toBe(69700);
+	});
+
+	describe('remote zone tax Offset', () => {
+		test('throw an error when type is unknown', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+		    	income: 50000
+			});
+
+			expect(() => {
+				tax.getRemoteZone('');
+			}).toThrow();
+		});
+
+		test('Zone A', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('A')).toBe(338);
+		});
+
+		test('Zone B', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('B')).toBe(57);
+		});
+
+		test('Zone B', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('SPECIAL')).toBe(1173);
+		});
+
+		test('Overseas B', () => {
+			const tax = TaxFactory.create({
+			    type: "resident",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('OVERSEAS')).toBe(338);
+		});
 	});
 });

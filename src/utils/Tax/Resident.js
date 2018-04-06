@@ -28,13 +28,11 @@ export default class Resident extends Tax {
             this.taxRate = 0.37;
             this.taxBase = 87000;
             this.taxPlus = 19822;
-        } else if (this.income >= 180001) {
+        } else {
             this.taxRate = 0.45;
             this.taxBase = 180000;
             this.taxPlus = 54232;
         }
-
-        return this.taxRate;
     }
 
     get taxRefund() {

@@ -13,6 +13,7 @@ export default class Tax {
 	    this.type = options.type;
 	    this.taxWithhold = this.formatTaxNumber(options.taxWithhold) || 0;
 	    this.workExpenses = this.formatTaxNumber(options.workExpenses) || 0; // OTHER WORK RELATED EXPENSES
+	    this.remoteZoneOffset = 0;
 	    this.medicareRate = 0.02;
 	    this.medicare = 0;
 	    this.taxBase = 0;
@@ -35,7 +36,7 @@ export default class Tax {
 	 * calculator tax refund
 	 */
 	get taxRefund() {
-		return this.formatTaxNumber(this.taxWithhold - (this.getTax + this.medicare));
+		return this.formatTaxNumber(this.taxWithhold - (this.getTax + this.medicare - this.remoteZoneOffset));
 	}
 
 	/**
@@ -61,6 +62,21 @@ export default class Tax {
 
     taxableIncome() {
     	return this.income - this.workExpenses;
+    }
+
+    getRemoteZone(zone) {
+    	switch (zone) {
+    		case 'A':
+    			return this.remoteZoneOffset = 338;
+    		case 'B':
+    			return this.remoteZoneOffset = 57;
+    		case 'SPECIAL':
+    			return this.remoteZoneOffset = 1173;
+    		case 'OVERSEAS':
+    			return this.remoteZoneOffset = 338;
+    		default:
+    			throw new Error("must give a zone");
+    	}
     }
 
 	calcTax() {

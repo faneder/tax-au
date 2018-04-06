@@ -55,5 +55,74 @@ describe('Working Holiday', () => {
 
 		expect(tax.getMedicare).toBe(800);
 	});
+
+	test('deduction other work related expenses', () => {
+		const tax = TaxFactory.create({
+		    type: "working_holiday",
+		    income: 70000,
+		    workExpenses: 300
+		});
+
+		expect(tax.taxableIncome()).toBe(69700);
+	});
+
+	describe('remote zone tax Offset', () => {
+		test('throw an error when type is unknown', () => {
+			const tax = TaxFactory.create({
+			    type: "working_holiday",
+		    	income: 50000
+			});
+
+			expect(() => {
+				tax.getRemoteZone('');
+			}).toThrow();
+		});
+
+		test('Zone A', () => {
+			const tax = TaxFactory.create({
+			    type: "working_holiday",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('A')).toBe(338);
+		});
+
+		test('Zone B', () => {
+			const tax = TaxFactory.create({
+			    type: "working_holiday",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('B')).toBe(57);
+		});
+
+		test('Zone B', () => {
+			const tax = TaxFactory.create({
+			    type: "working_holiday",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('SPECIAL')).toBe(1173);
+		});
+
+		test('Overseas B', () => {
+			const tax = TaxFactory.create({
+			    type: "working_holiday",
+			    income: 50000
+			});
+
+			expect(tax.getRemoteZone('OVERSEAS')).toBe(338);
+		});
+
+		test('should reduce tax in remote area', () => {
+			const tax = TaxFactory.create({
+			    type: "working_holiday",
+			    income: 30000
+			});
+			tax.getRemoteZone('A');
+
+			expect(tax.taxRefund).toBe(-4162);
+		});
+	});
 });
 
