@@ -35,7 +35,7 @@ describe('Resident', () => {
 		    income: 18201
 		});
 
-		expect(tax.getTax).toBe(0.19);
+		expect(tax.getTax).toBeCloseTo(0.19);
 	});
 
 	test('when taxable income between $37,001 to $87,000, tax on this income $3,572 plus 32.5c for each $1 over $37,000', () => {
