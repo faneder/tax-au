@@ -25,7 +25,7 @@ describe('Working Holiday', () => {
 		    income: 37001
 		});
 
-		expect(tax.getTax).toBe(5550.32);
+		expect(tax.getTax).toBeCloseTo(5550.32);
 	});
 
 	test('when taxable income between $87,001 – $180,000, tax on this income $21,800 plus 37c for each $1 over $87,000', () => {
@@ -34,7 +34,7 @@ describe('Working Holiday', () => {
 		    income: 160000
 		});
 
-		expect(tax.getTax).toBe(48810.00);
+		expect(tax.getTax).toBeCloseTo(48810.00);
 	});
 
 	test('when taxable income between $180,001 and over, tax on this income $56,210 plus 45c for each $1 over $180,000', () => {
@@ -43,7 +43,7 @@ describe('Working Holiday', () => {
 		    income: 200000
 		});
 
-		expect(tax.getTax).toBe(65210.00);
+		expect(tax.getTax).toBeCloseTo(65210.00);
 	});
 
 	test('if you do not apply the Medicare levy, you may pay the 2%', () => {
