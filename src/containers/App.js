@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withRoot from '../withRoot';
 import { withStyles } from 'material-ui/styles';
 
-import Tax from './Tax';
+import TaxContainer from './Tax';
 import NavigationBar from './NavigationBar';
 import showResults from './showResults';
 
@@ -21,12 +21,13 @@ class App extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.props)
 
     return (
       <div className={classes.root}>
         <NavigationBar className={classes.navigationBar}/>
-        <Tax onSubmit={showResults}/>
+        <TaxContainer onSubmit={showResults}/>
+      {/*
+        */}
       </div>
     );
   }
