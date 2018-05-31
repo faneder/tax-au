@@ -16,6 +16,7 @@ const styles = theme => ({
 class TaxContainer extends Component {
   constructor(props) {
     super(props);
+
     this.props.initialize({ deduction: '300' });
 
     this.state = {
@@ -28,14 +29,16 @@ class TaxContainer extends Component {
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    initialize: PropTypes.func.isRequired
   };
 
-  handleTaxReturn = () => {
+  handleTaxReturn = value => {
+    console.log(value);
     this.setState({ taxReturnSnack: true });
   };
 
   render() {
-    const {classes, ...props} = this.props
+    const { classes, ...props } = this.props
     return (
       <div>
         <Tax
@@ -57,10 +60,10 @@ class TaxContainer extends Component {
   }
 }
 
-TaxContainer = reduxForm({
+const TaxContainerForm = reduxForm({
   form: 'TaxContainer',
   asyncValidate,
   validate
 })(TaxContainer)
 
-export default withStyles(styles)(TaxContainer);
+export default withStyles(styles)(TaxContainerForm);
