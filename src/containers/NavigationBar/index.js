@@ -13,7 +13,6 @@ const styles = theme => ({
 });
 
 class NavigationBar extends Component {
-
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };

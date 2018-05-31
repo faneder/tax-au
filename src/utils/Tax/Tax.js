@@ -1,15 +1,14 @@
-//==============================
+// ==============================
 // ABSTRACT Tax
-//==============================
+// ==============================
 
 export default class Tax {
-    constructor(options) {
+  constructor(options) {
+    if (new.target == Tax) {
+      throw new Error('You cannot instantiate an abstract class!');
+    }
 
-        if (new.target == Tax) {
-            throw new Error("You cannot instantiate an abstract class!");
-        }
-
-        this.income = options.income;
+    this.income = options.income;
 	    this.type = options.type;
 	    this.taxWithhold = this.formatTaxNumber(options.taxWithhold) || 0;
 	    this.workExpenses = this.formatTaxNumber(options.workExpenses) || 0; // OTHER WORK RELATED EXPENSES
@@ -19,30 +18,30 @@ export default class Tax {
 	    this.taxBase = 0;
 	    this.taxPlus = 0;
 	    this.taxRate = 0;
-    }
+  }
 
-    /**
+  /**
      * Implementation required
      */
-	getTaxRate() {
-		throw new Error('You have to implement the method getTaxRate!');
-	}
+  getTaxRate() {
+    throw new Error('You have to implement the method getTaxRate!');
+  }
 
-	get getTax() {
+  get getTax() {
 	    return this.calcTax();
-	}
+  }
 
-	/**
+  /**
 	 * calculator tax refund
 	 */
-	get taxRefund() {
-		return this.formatTaxNumber(this.taxWithhold - (this.getTax + this.medicare - this.remoteZoneOffset));
-	}
+  get taxRefund() {
+    return this.formatTaxNumber(this.taxWithhold - (this.getTax + this.medicare - this.remoteZoneOffset));
+  }
 
-	/**
+  /**
 	 * checking is entitled to use the Medicare system
 	 */
-    setMedicare(hasMedicare = 'yes') {
+  setMedicare(hasMedicare = 'yes') {
     	// if you income is under 21655, you don't need to pay medicare
     	if (this.income <= 21655) return;
 
@@ -52,19 +51,19 @@ export default class Tax {
     		case 'no':
     			return this.medicare = 0;
     		default:
-    			throw new Error("the params are only allowed to use yes or no");
+    			throw new Error('the params are only allowed to use yes or no');
     	}
-    }
+  }
 
-    get getMedicare() {
+  get getMedicare() {
     	return this.medicare;
-    }
+  }
 
-    taxableIncome() {
+  taxableIncome() {
     	return this.income - this.workExpenses;
-    }
+  }
 
-    getRemoteZone(zone) {
+  getRemoteZone(zone) {
     	switch (zone) {
     		case 'A':
     			return this.remoteZoneOffset = 338;
@@ -75,17 +74,17 @@ export default class Tax {
     		case 'OVERSEAS':
     			return this.remoteZoneOffset = 338;
     		default:
-    			throw new Error("must give a zone");
+    			throw new Error('must give a zone');
     	}
-    }
+  }
 
-	calcTax() {
+  calcTax() {
 	    this.getTaxRate();
 
-		return this.formatTaxNumber(this.taxPlus + ((this.taxableIncome() - this.taxBase) * this.taxRate));
+    return this.formatTaxNumber(this.taxPlus + ((this.taxableIncome() - this.taxBase) * this.taxRate));
   	}
 
   	formatTaxNumber(num) {
-		return Math.floor(parseFloat(num) * 100) / 100;
+    return Math.floor(parseFloat(num) * 100) / 100;
   	}
 }

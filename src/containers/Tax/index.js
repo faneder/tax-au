@@ -51,7 +51,7 @@ class TaxContainer extends Component {
           message={
             `Tax Return 退稅金額: \
             $${this.state.taxReturn}`
-          }/>
+          } />
       </div>
     )
   }

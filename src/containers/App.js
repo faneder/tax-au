@@ -14,7 +14,6 @@ const styles = theme => ({
 });
 
 class App extends Component {
-
   // static childContextTypes = {
   //     theme: React.PropTypes.object,
   // };
@@ -24,9 +23,9 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <NavigationBar className={classes.navigationBar}/>
-        <TaxContainer onSubmit={showResults}/>
-      {/*
+        <NavigationBar className={classes.navigationBar} />
+        <TaxContainer onSubmit={showResults} />
+        {/*
         */}
       </div>
     );
