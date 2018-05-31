@@ -45,7 +45,7 @@ const Tax = props => {
     <form onSubmit={handleSubmit(handleTaxReturn)} className={classes.container}>
       <Field
         component={TextField}
-        name="grossSalary"
+        name="income"
         label="Gross Salary 工資"
         placeholder="收入總額"
         required
@@ -55,9 +55,9 @@ const Tax = props => {
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
         }} />
       <Field
-        name="taxWithheld"
+        name="taxWithhold"
         component={TextField}
-        label="Tax withheld 扣繳稅款"
+        label="Tax taxWithheld 扣繳稅款"
         type="number"
         className={classNames(classes.margin, classes.textField)} />
       <Field
@@ -67,7 +67,7 @@ const Tax = props => {
         type="number"
         className={classNames(classes.margin, classes.textField)} />
       <Field
-        name="deduction"
+        name="workExpenses"
         component={TextField}
         label="Deductions 工作相關支出"
         type="number"
@@ -81,10 +81,10 @@ const Tax = props => {
             component={Select}
             autoWidth
             className={classNames(classes.textField)}>
-            <MenuItem value="ZoneA">Zone A</MenuItem>
-            <MenuItem value="ZoneB">Zone B</MenuItem>
-            <MenuItem value="SpecialArea">Special area</MenuItem>
-            <MenuItem value="OverseasForces">Overseas forces</MenuItem>
+            <MenuItem value="a">Zone A</MenuItem>
+            <MenuItem value="b">Zone B</MenuItem>
+            <MenuItem value="special">Special area</MenuItem>
+            <MenuItem value="oversea">Overseas forces</MenuItem>
           </Field>
           <FormHelperText>
             補助金額<br />

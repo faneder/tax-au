@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
 import { withStyles } from 'material-ui/styles';
-import Tax from '../../components/Tax';
 import Snackbar from 'material-ui/Snackbar';
 import asyncValidate from './asyncValidate'
 import validate from './validate'
+import Tax from '../../components/Tax';
+import { createTax } from '../../actions';
 
 const styles = theme => ({
   SnackbarContent: {
@@ -17,7 +19,7 @@ class TaxContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.props.initialize({ deduction: '300' });
+    this.props.initialize({ workExpenses: '300' });
 
     this.state = {
       taxReturn: 0,
@@ -33,7 +35,9 @@ class TaxContainer extends Component {
   };
 
   handleTaxReturn = value => {
-    console.log(value);
+    this.props.createTax(value, () => {
+      // this.props.history.push("/");
+    });
     this.setState({ taxReturnSnack: true });
   };
 
@@ -66,4 +70,4 @@ const TaxContainerForm = reduxForm({
   validate
 })(TaxContainer)
 
-export default withStyles(styles)(TaxContainerForm);
+export default withStyles(styles)(connect(null, { createTax })(TaxContainerForm));

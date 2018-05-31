@@ -46,6 +46,16 @@ describe('Working Holiday', () => {
     expect(tax.getTax).toBeCloseTo(65210.00);
   });
 
+  test('do not pay the Medicare levy with holding working visa', () => {
+    const tax = TaxFactory.create({
+        type: 'resident',
+        income: 40000,
+    });
+    tax.setMedicare('no');
+
+    expect(tax.getMedicare).toBe(0);
+  });
+
   test('if you do not apply the Medicare levy, you may pay the 2%', () => {
     const tax = TaxFactory.create({
 		    type: 'working_holiday',

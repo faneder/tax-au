@@ -83,16 +83,6 @@ describe('Resident', () => {
       expect(tax.getMedicare).toBe(800);
     });
 
-    test('do not pay the Medicare levy with holding working visa', () => {
-      const tax = TaxFactory.create({
-			    type: 'resident',
-			    income: 40000,
-      });
-      tax.setMedicare('no');
-
-      expect(tax.getMedicare).toBe(0);
-    });
-
     test('throw an error when type is wrong', () => {
       const tax = TaxFactory.create({
 			    type: 'resident',
