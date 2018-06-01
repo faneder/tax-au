@@ -25,6 +25,7 @@
     "object-curly-spacing" : [2, "always"],
     "comma-dangle"         : "off",
     "space-before-function-paren": 0,
-    "semi": 0
+    "semi": 0,
+    "eol-last": 0,
   }
 }
