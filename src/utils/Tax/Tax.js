@@ -65,7 +65,7 @@ export default class Tax {
   }
 
   taxableIncome() {
-  	return this.income - this.workExpenses;
+  	return (this.income > this.workExpenses) ? (this.income - this.workExpenses) : 0;
   }
 
   getRemoteZone(zone) {

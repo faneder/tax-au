@@ -68,12 +68,32 @@ describe('Working Holiday', () => {
 
   test('deduction other work related expenses', () => {
     const tax = TaxFactory.create({
-		    type: 'working_holiday',
-		    income: 70000,
-		    workExpenses: 300
+        type: 'working_holiday',
+        income: 70000,
+        workExpenses: 300
     });
 
     expect(tax.taxableIncome()).toBe(69700);
+  });
+
+  test('deduction is less then income', () => {
+    const tax = TaxFactory.create({
+        type: 'working_holiday',
+        income: 100,
+        workExpenses: 300
+    });
+
+    expect(tax.taxableIncome()).toBe(0);
+  });
+
+  test('deduction is equal then income', () => {
+    const tax = TaxFactory.create({
+		    type: 'working_holiday',
+		    income: 300,
+		    workExpenses: 300
+    });
+
+    expect(tax.taxableIncome()).toBe(0);
   });
 
   describe('remote zone tax Offset', () => {

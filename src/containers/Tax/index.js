@@ -31,14 +31,21 @@ class TaxContainer extends Component {
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    initialize: PropTypes.func.isRequired
+    initialize: PropTypes.func.isRequired,
+    createTax: PropTypes.func.isRequired,
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.taxReturn !== this.props.taxReturn) {
+      this.setState({
+        taxReturnSnack: true,
+        taxReturn: nextProps.taxReturn
+      });
+    }
+  }
+
   handleTaxReturn = value => {
-    this.props.createTax(value, () => {
-      // this.props.history.push("/");
-    });
-    this.setState({ taxReturnSnack: true });
+    this.props.createTax(value);
   };
 
   render() {
@@ -70,4 +77,8 @@ const TaxContainerForm = reduxForm({
   validate
 })(TaxContainer)
 
-export default withStyles(styles)(connect(null, { createTax })(TaxContainerForm));
+const mapStateToProps = (state, ownProps) => {
+  return { taxReturn: state.tax.taxRefund }
+}
+
+export default withStyles(styles)(connect(mapStateToProps, { createTax })(TaxContainerForm));
