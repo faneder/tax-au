@@ -10,7 +10,7 @@ export default function(values) {
   })
 
   numberFields.forEach(field => {
-    if (field && isNaN(Number(values[field]))) {
+    if (values[field] && isNaN(Number(values[field]))) {
       errors[field] = 'Must be a number'
     }
   })
