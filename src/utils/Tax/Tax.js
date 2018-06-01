@@ -9,15 +9,15 @@ export default class Tax {
     }
 
     this.income = options.income;
-	    this.type = options.type;
-	    this.taxWithhold = this.formatTaxNumber(options.taxWithhold) || 0;
-	    this.workExpenses = this.formatTaxNumber(options.workExpenses) || 0; // OTHER WORK RELATED EXPENSES
-	    this.remoteZoneOffset = 0;
-	    this.medicareRate = 0.02;
-	    this.medicare = 0;
-	    this.taxBase = 0;
-	    this.taxPlus = 0;
-	    this.taxRate = 0;
+    this.type = options.type;
+    this.taxWithhold = this.formatTaxNumber(options.taxWithhold) || 0;
+    this.workExpenses = this.formatTaxNumber(options.workExpenses) || 0; // OTHER WORK RELATED EXPENSES
+    this.remoteZoneOffset = 0;
+    this.medicareRate = 0.02;
+    this.medicare = 0;
+    this.taxBase = 0;
+    this.taxPlus = 0;
+    this.taxRate = 0;
   }
 
   /**
