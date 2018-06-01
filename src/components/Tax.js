@@ -44,11 +44,10 @@ const Tax = props => {
   return (
     <form onSubmit={handleSubmit(handleTaxReturn)} className={classes.container}>
       <Field
-        component={TextField}
         name="income"
+        component={TextField}
         label="Gross Salary 工資"
         placeholder="收入總額"
-        required
         type="number"
         className={classNames(classes.margin, classes.textField)}
         InputProps={{
@@ -59,20 +58,20 @@ const Tax = props => {
         component={TextField}
         label="Tax taxWithheld 扣繳稅款"
         type="number"
-        className={classNames(classes.margin, classes.textField)} />
-      <Field
-        name="other-income"
-        component={TextField}
-        label="Other Income 其他收入"
-        type="number"
-        className={classNames(classes.margin, classes.textField)} />
+        className={classNames(classes.margin, classes.textField)}
+        InputProps={{
+          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+        }} />
       <Field
         name="workExpenses"
         component={TextField}
         label="Deductions 工作相關支出"
         type="number"
         helperText="每年可以申報最多$300，無需保留收據的工作相關稅務抵免"
-        className={classNames(classes.margin, classes.textField)} />
+        className={classNames(classes.margin, classes.textField)}
+        InputProps={{
+          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+        }} />
       <div>
         <FormControl className={classNames(classes.margin)}>
           <InputLabel>Remote Zone 偏遠地區</InputLabel>
