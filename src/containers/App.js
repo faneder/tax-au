@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 
 import TaxContainer from './Tax';
 import NavigationBar from './NavigationBar';
-import showResults from './showResults';
+// import showResults from './showResults';
 
 const styles = theme => ({
   root: {
@@ -20,7 +20,8 @@ class App extends Component {
     return (
       <div className={classes.root}>
         <NavigationBar className={classes.navigationBar} />
-        <TaxContainer onSubmit={showResults} />
+        <TaxContainer />
+        { /* <TaxContainer onSubmit={showResults} /> */ }
       </div>
     );
   }

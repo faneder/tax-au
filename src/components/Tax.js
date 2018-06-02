@@ -21,14 +21,14 @@ const styles = theme => ({
 
   },
   textField: {
-    width: 300
+    width: '80%'
   },
   margin: {
     margin: theme.spacing.unit
   },
   formControl: {
     margin: theme.spacing.unit,
-    minWidth: 120,
+    minWidth: 200
   },
   button: {
     margin: theme.spacing.unit
@@ -36,13 +36,17 @@ const styles = theme => ({
   buttonBox: {
     marginTop: theme.spacing.unit * 5
   },
+  infoBtn: {
+    padding: 0,
+    minWidth: 0
+  },
 });
 
 const Tax = props => {
-  const { handleSubmit, pristine, reset, submitting, classes, handleTaxReturn } = props
+  const { handleSubmit, pristine, reset, submitting, classes, handletaxRefund } = props
 
   return (
-    <form onSubmit={handleSubmit(handleTaxReturn)} className={classes.container}>
+    <form onSubmit={handleSubmit(handletaxRefund)} className={classes.container}>
       <Field
         name="income"
         component={TextField}
@@ -73,13 +77,11 @@ const Tax = props => {
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
         }} />
       <div>
-        <FormControl className={classNames(classes.margin)}>
-          <InputLabel>Remote Zone 偏遠地區</InputLabel>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="name-readonly">Remote Zone 偏遠地區</InputLabel>
           <Field
             name="remoteZone"
-            component={Select}
-            autoWidth
-            className={classNames(classes.textField)}>
+            component={Select} >
             <MenuItem value="a">Zone A</MenuItem>
             <MenuItem value="b">Zone B</MenuItem>
             <MenuItem value="special">Special area</MenuItem>
@@ -94,11 +96,11 @@ const Tax = props => {
           </FormHelperText>
         </FormControl>
         <Button
+          className={classNames(classes.infoBtn)}
           target="_blank"
           href="https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3"
-          className={classes.button}
         >
-          點選查看區域對照表
+          <i className="material-icons">info</i>
         </Button>
       </div>
       <FormControl fullWidth margin="dense">
@@ -112,9 +114,11 @@ const Tax = props => {
           - 同一個工作公司或是同一個地區工作超過六個月
           - 你會需要有一個澳洲固定住址
           <Button
+            className={classNames(classes.infoBtn)}
             target="_blank"
-            href="https://www.ato.gov.au/Individuals/Ind/Residency---working-holiday-or-visit">
-            詳細資訊
+            href="https://www.ato.gov.au/Individuals/Ind/Residency---working-holiday-or-visit"
+          >
+            <i className="material-icons">info</i>
           </Button>
         </FormHelperText>
       </FormControl>
@@ -155,7 +159,7 @@ Tax.propTypes = {
   pristine: PropTypes.any.isRequired,
   reset: PropTypes.any.isRequired,
   submitting: PropTypes.any.isRequired,
-  handleTaxReturn: PropTypes.any.isRequired,
+  handletaxRefund: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Tax);

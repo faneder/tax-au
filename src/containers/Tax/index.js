@@ -12,6 +12,7 @@ import { createTax } from '../../actions';
 const styles = theme => ({
   SnackbarContent: {
     minWidth: '100%',
+    background: theme.palette.primary.dark,
   },
 });
 
@@ -22,49 +23,56 @@ class TaxContainer extends Component {
     this.props.initialize({ workExpenses: '300' });
 
     this.state = {
-      taxReturn: 0,
-      taxReturnSnack: false
+      taxRefundSnack: false,
+      taxInfoText: null
     };
 
-    this.handleTaxReturn = this.handleTaxReturn.bind(this);
+    this.handletaxRefund = this.handletaxRefund.bind(this);
   }
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
     initialize: PropTypes.func.isRequired,
     createTax: PropTypes.func.isRequired,
+    taxRefund: PropTypes.number,
+  };
+
+  static defaultProps = {
+    taxRefund: 0
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.taxReturn !== this.props.taxReturn) {
+    if (nextProps.taxRefund !== this.props.taxRefund) {
       this.setState({
-        taxReturnSnack: true,
-        taxReturn: nextProps.taxReturn
+        taxRefundSnack: true,
+        taxRefund: nextProps.taxRefund,
+        taxInfoText: (nextProps.taxRefund > 0) ? 'tax refuned 退稅金額' : 'have to pay 補稅金額'
       });
     }
   }
 
-  handleTaxReturn = value => {
+  handletaxRefund = value => {
     this.props.createTax(value);
   };
 
   render() {
     const { classes, ...props } = this.props
+
     return (
       <div>
         <Tax
           {...props}
-          handleTaxReturn={this.handleTaxReturn}
+          handletaxRefund={this.handletaxRefund}
         />
         <Snackbar
           className={classes.SnackbarContent}
-          open={this.state.taxReturnSnack}
+          open={this.state.taxRefundSnack}
           SnackbarContentProps={{
             className: classes.SnackbarContent,
           }}
           message={
-            `Tax Return 退稅金額: \
-            $${this.state.taxReturn}`
+            `${this.state.taxInfoText} \
+            $${this.props.taxRefund}`
           } />
       </div>
     )
@@ -77,8 +85,8 @@ const TaxContainerForm = reduxForm({
   validate
 })(TaxContainer)
 
-const mapStateToProps = (state, ownProps) => {
-  return { taxReturn: state.tax.taxRefund }
+const mapStateToProps = (state) => {
+  return { ...state.tax }
 }
 
 export default withStyles(styles)(connect(mapStateToProps, { createTax })(TaxContainerForm));

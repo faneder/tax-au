@@ -48,8 +48,8 @@ describe('Working Holiday', () => {
 
   test('do not pay the Medicare levy with holding working visa', () => {
     const tax = TaxFactory.create({
-        type: 'resident',
-        income: 40000,
+      type: 'resident',
+      income: 40000,
     });
     tax.setMedicare('no');
 
@@ -68,9 +68,9 @@ describe('Working Holiday', () => {
 
   test('deduction other work related expenses', () => {
     const tax = TaxFactory.create({
-        type: 'working_holiday',
-        income: 70000,
-        workExpenses: 300
+      type: 'working_holiday',
+      income: 70000,
+      workExpenses: 300
     });
 
     expect(tax.taxableIncome()).toBe(69700);
@@ -78,9 +78,9 @@ describe('Working Holiday', () => {
 
   test('deduction is less then income', () => {
     const tax = TaxFactory.create({
-        type: 'working_holiday',
-        income: 100,
-        workExpenses: 300
+      type: 'working_holiday',
+      income: 100,
+      workExpenses: 300
     });
 
     expect(tax.taxableIncome()).toBe(0);

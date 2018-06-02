@@ -5,12 +5,8 @@ import Tax from './Tax';
 // ==============================
 
 export default class WorkingHoliday extends Tax {
-  constructor(options) {
-    super(options);
-  }
-
   getTaxRate() {
-    	if (this.income <= 37000) {
+    if (this.income <= 37000) {
       this.taxRate = 0.15;
     } else if (this.income >= 37001 && this.income <= 87000) {
       this.taxRate = 0.325;
