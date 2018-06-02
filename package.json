@@ -2,6 +2,9 @@
   "name": "tax-au",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://faneder.github.io/tax-au",
+  "main": "index.js",
+  "repository": "git@github.com:faneder/react-au.git",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -9,12 +12,14 @@
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@material-ui/core": "^1.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^4.19.1",
     "material-ui": "next",
     "raf": "^3.4.0",
     "react": "^16.0.0",
