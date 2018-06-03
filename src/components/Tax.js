@@ -21,7 +21,7 @@ const styles = theme => ({
 
   },
   textField: {
-    width: '80%'
+    width: '100%'
   },
   margin: {
     margin: theme.spacing.unit
@@ -37,7 +37,6 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 5
   },
   infoBtn: {
-    padding: 0,
     minWidth: 0
   },
 });
@@ -76,33 +75,31 @@ const Tax = props => {
         InputProps={{
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
         }} />
-      <div>
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="name-readonly">Remote Zone 偏遠地區</InputLabel>
-          <Field
-            name="remoteZone"
-            component={Select} >
-            <MenuItem value="a">Zone A</MenuItem>
-            <MenuItem value="b">Zone B</MenuItem>
-            <MenuItem value="special">Special area</MenuItem>
-            <MenuItem value="oversea">Overseas forces</MenuItem>
-          </Field>
-          <FormHelperText>
-            補助金額<br />
-            Zone A => $338<br />
-            Zone B => $57<br />
-            Special area => $1,173<br />
-            Overseas forces => $338<br />
-          </FormHelperText>
-        </FormControl>
-        <Button
-          className={classNames(classes.infoBtn)}
-          target="_blank"
-          href="https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3"
-        >
-          <i className="material-icons">info</i>
-        </Button>
-      </div>
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor="name-readonly">Remote Zone 偏遠地區</InputLabel>
+        <Field
+          name="remoteZone"
+          component={Select} >
+          <MenuItem value="a">Zone A</MenuItem>
+          <MenuItem value="b">Zone B</MenuItem>
+          <MenuItem value="special">Special area</MenuItem>
+          <MenuItem value="oversea">Overseas forces</MenuItem>
+        </Field>
+        <FormHelperText>
+          補助金額<br />
+          Zone A => $338<br />
+          Zone B => $57<br />
+          Special area => $1,173<br />
+          Overseas forces => $338<br />
+        </FormHelperText>
+      </FormControl>
+      <Button
+        className={classNames(classes.infoBtn)}
+        target="_blank"
+        href="https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3"
+      >
+        <i className="material-icons">info</i>
+      </Button>
       <FormControl fullWidth margin="dense">
         <FormControlLabel
           control={<Field name="resident" component={Switch} color="primary" />}

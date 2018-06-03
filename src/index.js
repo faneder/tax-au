@@ -7,9 +7,9 @@ import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import { logger, crashReporter } from './middleware/logger';
 
-let loggerMiddleware = (process.env.NODE_ENV !== 'production') ? logger : '';
+// let loggerMiddleware = (process.env.NODE_ENV !== 'production') ? logger : '';
 
-const createStoreWithMiddleware = applyMiddleware(loggerMiddleware, crashReporter)(createStore);
+const createStoreWithMiddleware = applyMiddleware(logger, crashReporter)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(rootReducer)}>
