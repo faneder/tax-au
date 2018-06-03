@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form'
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import { MenuItem } from 'material-ui/Menu'
-import { FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form'
-import { InputLabel, InputAdornment } from 'material-ui/Input';
-import Button from 'material-ui/Button';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Button from '@material-ui/core/Button';
 import {
   Select,
   TextField,
