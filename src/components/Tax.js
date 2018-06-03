@@ -37,7 +37,7 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   buttonBox: {
-    marginTop: theme.spacing.unit * 5
+    marginTop: theme.spacing.unit * 2
   },
   infoBtn: {
     minWidth: 0
@@ -88,6 +88,7 @@ const Tax = props => {
           <MenuItem value="special">Special area</MenuItem>
           <MenuItem value="oversea">Overseas forces</MenuItem>
         </Field>
+        { /*
         <FormHelperText>
           補助金額<br />
           Zone A => $338<br />
@@ -95,6 +96,7 @@ const Tax = props => {
           Special area => $1,173<br />
           Overseas forces => $338<br />
         </FormHelperText>
+      */ }
       </FormControl>
       <Button
         className={classNames(classes.infoBtn)}
