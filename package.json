@@ -5,6 +5,14 @@
   "homepage": "https://tax-australia.firebaseapp.com",
   "main": "index.js",
   "repository": "git@github.com:faneder/tax-au.git",
+  "authors": [{
+      "name" : "Eder Fan",
+      "email" : "fanedercode@gmail.com"
+  }],
+  "keywords": ["react", "redux", "material-ui"],
+  "files": ["*.md", "docs/*.md", "lib", "src"],
+  "bugs": "https://github.com/faneder/tax-au/issues",
+  "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
