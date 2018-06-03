@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import asyncValidate from './asyncValidate'
 import validate from './validate'
+import { createTax } from '../../actions';
 import Tax from '../../components/Tax';
 import MessageBar from '../../components/MessageBar';
-import { createTax } from '../../actions';
 
 class TaxContainer extends Component {
   constructor(props) {
