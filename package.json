@@ -2,9 +2,9 @@
   "name": "tax-au",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://faneder.github.io/tax-au",
+  "homepage": "https://tax-australia.firebaseapp.com",
   "main": "index.js",
-  "repository": "git@github.com:faneder/react-au.git",
+  "repository": "git@github.com:faneder/tax-au.git",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
