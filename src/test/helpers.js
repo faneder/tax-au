@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import withRoot from '../withRoot';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const spy = jest.fn();
 const store = createStore(() => ({}));

@@ -1,14 +1,16 @@
-import React from 'react';
-import { shallow } from 'enzyme';
 import App from './App';
+import NavigationBar from './NavigationBar';
+import Tax from './Tax';
+import { rendererComponent, mountComponent, shallowComponent } from '../test/helpers';
 
-it('renders without crashing', () => {
-  shallow(<App />);
-});
+describe('App', () => {
+  let component;
 
-it('renders TAX RETURN message', () => {
-  const wrapper = shallow(<App />);
-  const tax = <h1 className="App-title">TAX RETURN</h1>;
+  beforeEach(() => {
+    component = mountComponent(App);
+  });
 
-  expect(wrapper.contains(tax)).toEqual(true);
+  it('`App` renders without crashing', () => {
+    shallow(<App />);
+  });
 });
