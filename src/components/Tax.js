@@ -62,7 +62,7 @@ const Tax = props => {
       <Field
         name="taxWithhold"
         component={TextField}
-        label="Tax Tax Withheld 扣繳稅款"
+        label="Tax Withheld 扣繳稅款"
         placeholder="已扣繳稅款"
         type="number"
         className={classNames(classes.margin, classes.textField)}
