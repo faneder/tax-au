@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Snackbar from '@material-ui/core/Snackbar';
+import {
+  withStyles,
+  Snackbar
+} from '@material-ui/core';
 
 const styles = theme => ({
   SnackbarContent: {

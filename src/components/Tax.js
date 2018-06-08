@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form'
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Button from '@material-ui/core/Button';
+import {
+  withStyles,
+  MenuItem,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  InputLabel,
+  InputAdornment,
+  Typography,
+  Button
+} from '@material-ui/core';
 import {
   Select,
   TextField,
@@ -22,6 +25,12 @@ const styles = theme => ({
     flexWrap: 'wrap',
     padding: theme.spacing.unit * 3
 
+  },
+  headline: {
+    width: '100%',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
   },
   textField: {
     width: '100%'
@@ -50,10 +59,19 @@ const Tax = props => {
 
   return (
     <form onSubmit={handleSubmit(handletaxRefund)} className={classes.container}>
+      <div className={classes.headline}>
+        <Typography variant="headline" gutterBottom={true}>
+          簡易稅率計算機
+        </Typography>
+      </div>
+      <Typography variant="subheading" gutterBottom={true}>
+        簡易稅率計算機將幫助您計算在澳洲期間的收入所需要繳的稅
+        {/* Use this calculator to estimate your income taxes and your tax refund or amount you may need to pay*/}
+      </Typography>
       <Field
         name="income"
         component={TextField}
-        label="Gross Salary 工資"
+        label="Gross Salary 工資*"
         placeholder="收入總額"
         type="number"
         className={classNames(classes.margin, classes.textField)}
