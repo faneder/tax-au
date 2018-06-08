@@ -17,7 +17,7 @@ const MessageBar = props => {
     <Snackbar
       className={classes.SnackbarContent}
       open={taxRefundSnack}
-      SnackbarContentProps={{
+      snackbarcontentprops={{
         className: classes.SnackbarContent,
       }}
       message={
