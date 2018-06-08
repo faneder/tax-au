@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
-import { logger, crashReporter } from './middleware/logger';
+import { crashReporter } from './middleware/logger';
 
-// let loggerMiddleware = (process.env.NODE_ENV !== 'production') ? logger : '';
+const middlewares = [crashReporter];
 
-const createStoreWithMiddleware = applyMiddleware(logger, crashReporter)(createStore);
+if (process.env.NODE_ENV === `development`) {
+  const { logger } = require(`redux-logger`);
+
+  middlewares.push(logger);
+}
+
+const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(rootReducer)}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')

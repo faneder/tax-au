@@ -37,7 +37,8 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   buttonBox: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 3
   },
   infoBtn: {
     minWidth: 0
@@ -104,7 +105,7 @@ const Tax = props => {
         target="_blank"
         href="https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3"
       >
-        <i className="material-icons">info</i>
+        <i className="fas fa-info-circle"></i>
       </Button>
       <FormControl fullWidth margin="dense">
         <FormControlLabel
@@ -121,7 +122,7 @@ const Tax = props => {
             target="_blank"
             href="https://www.ato.gov.au/Individuals/Ind/Residency---working-holiday-or-visit"
           >
-            <i className="material-icons">info</i>
+            <i className="fas fa-info-circle"></i>
           </Button>
         </FormHelperText>
       </FormControl>
