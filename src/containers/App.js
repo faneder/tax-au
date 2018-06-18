@@ -19,7 +19,7 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <NavigationBar className={classes.navigationBar} />
+        <NavigationBar />
         <TaxContainer />
         { /* <TaxContainer onSubmit={showResults} /> */ }
       </div>

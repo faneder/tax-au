@@ -1,21 +1,10 @@
+import React from 'react';
 import renderer from 'react-test-renderer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import withRoot from '../withRoot';
-import { withStyles } from '@material-ui/core/styles';
 
-const spy = jest.fn();
+// const spy = jest.fn();
 const store = createStore(() => ({}));
-
-const component = () => {
-
-};
-
-const styles = theme => ({
-  root: {
-    textAlign: 'center',
-  }
-});
 
 const shallowComponent = (ComponentClass, props = {}, state = {}) => {
   return shallow(
