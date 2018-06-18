@@ -12,8 +12,6 @@ class TaxContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.props.initialize({ workExpenses: '300' });
-
     this.state = {
       taxRefundSnack: false,
       taxInfoText: null
@@ -67,6 +65,7 @@ class TaxContainer extends Component {
 
 const TaxContainerForm = reduxForm({
   form: 'TaxContainer',
+  initialValues: { workExpenses: 300 },
   asyncValidate,
   validate
 })(TaxContainer)

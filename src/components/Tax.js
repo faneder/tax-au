@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form'
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Button from '@material-ui/core/Button';
+import {
+  withStyles,
+  MenuItem,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  InputLabel,
+  InputAdornment,
+  Typography,
+  Button
+} from '@material-ui/core';
 import {
   Select,
   TextField,
@@ -22,6 +25,12 @@ const styles = theme => ({
     flexWrap: 'wrap',
     padding: theme.spacing.unit * 3
 
+  },
+  headline: {
+    width: '100%',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    borderBottomStyle: 'solid',
   },
   textField: {
     width: '100%'
@@ -37,7 +46,8 @@ const styles = theme => ({
     margin: theme.spacing.unit
   },
   buttonBox: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 3
   },
   infoBtn: {
     minWidth: 0
@@ -49,10 +59,19 @@ const Tax = props => {
 
   return (
     <form onSubmit={handleSubmit(handletaxRefund)} className={classes.container}>
+      <div className={classes.headline}>
+        <Typography variant="headline" gutterBottom={true}>
+          簡易稅率計算機
+        </Typography>
+      </div>
+      <Typography variant="subheading" gutterBottom={true}>
+        簡易稅率計算機將幫助您計算在澳洲期間的收入所需要繳的稅
+        {/* Use this calculator to estimate your income taxes and your tax refund or amount you may need to pay*/}
+      </Typography>
       <Field
         name="income"
         component={TextField}
-        label="Gross Salary 工資"
+        label="Gross Salary 工資*"
         placeholder="收入總額"
         type="number"
         className={classNames(classes.margin, classes.textField)}
@@ -62,7 +81,7 @@ const Tax = props => {
       <Field
         name="taxWithhold"
         component={TextField}
-        label="Tax Tax Withheld 扣繳稅款"
+        label="Tax Withheld 扣繳稅款"
         placeholder="已扣繳稅款"
         type="number"
         className={classNames(classes.margin, classes.textField)}
@@ -104,7 +123,7 @@ const Tax = props => {
         target="_blank"
         href="https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3"
       >
-        <i className="material-icons">info</i>
+        <i className="fas fa-info-circle"></i>
       </Button>
       <FormControl fullWidth margin="dense">
         <FormControlLabel
@@ -121,7 +140,7 @@ const Tax = props => {
             target="_blank"
             href="https://www.ato.gov.au/Individuals/Ind/Residency---working-holiday-or-visit"
           >
-            <i className="material-icons">info</i>
+            <i className="fas fa-info-circle"></i>
           </Button>
         </FormHelperText>
       </FormControl>
