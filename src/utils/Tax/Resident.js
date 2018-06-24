@@ -42,7 +42,7 @@ export default class Resident extends Tax {
   getLowerIncomeTax() {
     let lowerTax = 0;
 
-    if (this.income > 445 && this.income <= 37000) {
+    if (this.income > 18200 && this.income <= 37000) {
       lowerTax = -this.lowerIncome;
     } else if (this.income >= 37001 && this.income <= 66667) {
       lowerTax = this.lowerIncome - ((this.income - 37000) * this.lowerIncomeRate);
