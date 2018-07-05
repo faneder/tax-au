@@ -11,7 +11,8 @@ import {
   InputLabel,
   InputAdornment,
   Typography,
-  Button
+  Button,
+  Icon
 } from '@material-ui/core';
 import {
   Select,
@@ -25,6 +26,9 @@ const styles = theme => ({
     flexWrap: 'wrap',
     padding: theme.spacing.unit * 3
 
+  },
+  autoWidth: {
+    width: '100%',
   },
   headline: {
     width: '100%',
@@ -49,6 +53,9 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 3
   },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
+  },
   infoBtn: {
     minWidth: 0
   },
@@ -58,7 +65,7 @@ const Tax = props => {
   const { handleSubmit, pristine, reset, submitting, classes, handletaxRefund } = props
 
   return (
-    <form onSubmit={handleSubmit(handletaxRefund)} className={classes.container}>
+    <form onSubmit={handleSubmit(handletaxRefund)} noValidate className={classes.container}>
       <div className={classes.headline}>
         <Typography variant="headline" gutterBottom>
           簡易稅率計算機
@@ -133,13 +140,13 @@ const Tax = props => {
         />
         <FormHelperText>
           - 澳洲入境超過六個月
-          - 居住在澳洲同一地區超過六個月
-          - 同一個工作公司或是同一個地區工作超過六個月
-          - 你會需要有一個澳洲固定住址
+          - 居住在澳洲同一區域超過六個月
+          - 一樣個公司或一樣的工作區域超過六個月
+          - 需要有一個澳洲固定住址
           <Button
             className={classNames(classes.infoBtn)}
             target="_blank"
-            href="https://www.ato.gov.au/Individuals/Ind/Residency---working-holiday-or-visit"
+            href="https://www.ato.gov.au/Individuals/Ind/Resident-for-tax-if-WHM-/?=redirected"
           >
             <i className="fas fa-info-circle" />
           </Button>
@@ -151,10 +158,10 @@ const Tax = props => {
           label="Medicare Levy 醫療減免"
         />
         <FormHelperText>
-          這個是澳洲人的健保，但我們不是澳洲人，所以是可以申請來退的，為每人年總收入的2%，低於21355元就不用申請，但這個非強制，就算忘記申請也不會被罰款。如何申請減免
+          醫療豁免是澳洲人的健保，非澳洲人即可申請退稅，為每人年總收入的2%，低於21355元則不用申請
         </FormHelperText>
       </FormControl>
-      <div className={classes.buttonBox}>
+      <div>
         <Button
           id="submitBtn"
           type="submit"
@@ -171,6 +178,18 @@ const Tax = props => {
           onClick={reset}
           className={classes.button}>
           清除
+        </Button>
+      </div>
+      <div className={classNames(classes.autoWidth, classes.buttonBox)}>
+        <hr />
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          target="_blank"
+          href="https://www.ato.gov.au/Individuals/Lodging-your-tax-return/">
+          報稅傳送門
+          <Icon className={classes.rightIcon}>send</Icon>
         </Button>
       </div>
     </form>

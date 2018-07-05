@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   withStyles,
-  Snackbar
+  Snackbar,
+  SnackbarContent
 } from '@material-ui/core';
+import green from '@material-ui/core/colors/green';
 
 const styles = theme => ({
-  SnackbarContent: {
-    minWidth: '100%',
-    background: theme.palette.primary.dark,
+  snackbarContent: {
+    background: green[600],
   },
 });
 
@@ -17,15 +18,20 @@ const MessageBar = props => {
 
   return (
     <Snackbar
-      className={classes.SnackbarContent}
       open={taxRefundSnack}
-      snackbarcontentprops={{
-        className: classes.SnackbarContent,
-      }}
-      message={
-        `${taxInfoText} \
-        $${taxRefund}`
-      } />
+      autoHideDuration={6000}
+    >
+      <SnackbarContent
+        anchororigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        className={classes.snackbarContent}
+        message={
+          `${taxInfoText} \
+          $${taxRefund}`
+        } />
+    </Snackbar>
   )
 }
 

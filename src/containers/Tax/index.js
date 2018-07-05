@@ -20,16 +20,6 @@ class TaxContainer extends Component {
     this.handletaxRefund = this.handletaxRefund.bind(this);
   }
 
-  static propTypes = {
-    initialize: PropTypes.func.isRequired,
-    createTax: PropTypes.func.isRequired,
-    taxRefund: PropTypes.number,
-  };
-
-  static defaultProps = {
-    taxRefund: 0
-  };
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.taxRefund !== this.props.taxRefund) {
       this.setState({
@@ -40,7 +30,7 @@ class TaxContainer extends Component {
     }
   }
 
-  handletaxRefund = value => {
+  handletaxRefund(value) {
     this.props.createTax(value);
   };
 
@@ -62,6 +52,16 @@ class TaxContainer extends Component {
     )
   }
 }
+
+TaxContainer.propTypes = {
+  initialize: PropTypes.func.isRequired,
+  createTax: PropTypes.func.isRequired,
+  taxRefund: PropTypes.number,
+};
+
+TaxContainer.defaultProps = {
+  taxRefund: null
+};
 
 const TaxContainerForm = reduxForm({
   form: 'TaxContainer',
