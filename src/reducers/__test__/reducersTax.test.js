@@ -3,7 +3,7 @@ import { FETCH_TAX } from '../../actions/types';
 
 it('handle action type of FETCH_TAX', () => {
   const data = {
-    	taxRefund: 10
+    taxRefund: 10
   };
 
   const action = {

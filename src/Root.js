@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers';
@@ -14,10 +15,14 @@ if (process.env.NODE_ENV === `development`) {
 
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
 
-export default props => {
+const Root = props => {
   return (
     <Provider store={store}>
       {props.children}
     </Provider>
   )
+}
+
+Root.propTypes = {
+  children: PropTypes.node.isRequired,
 }
