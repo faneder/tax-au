@@ -60,15 +60,16 @@ const Tax = props => {
   return (
     <form onSubmit={handleSubmit(handletaxRefund)} className={classes.container}>
       <div className={classes.headline}>
-        <Typography variant="headline" gutterBottom={true}>
+        <Typography variant="headline" gutterBottom>
           簡易稅率計算機
         </Typography>
       </div>
-      <Typography variant="subheading" gutterBottom={true}>
+      <Typography variant="subheading" gutterBottom>
         簡易稅率計算機將幫助您計算在澳洲期間的收入所需要繳的稅
-        {/* Use this calculator to estimate your income taxes and your tax refund or amount you may need to pay*/}
+        {/* Use this calculator to estimate your income taxes and your tax refund or amount you may need to pay */}
       </Typography>
       <Field
+        id="income"
         name="income"
         component={TextField}
         label="Gross Salary 工資*"
@@ -123,7 +124,7 @@ const Tax = props => {
         target="_blank"
         href="https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3"
       >
-        <i className="fas fa-info-circle"></i>
+        <i className="fas fa-info-circle" />
       </Button>
       <FormControl fullWidth margin="dense">
         <FormControlLabel
@@ -140,7 +141,7 @@ const Tax = props => {
             target="_blank"
             href="https://www.ato.gov.au/Individuals/Ind/Residency---working-holiday-or-visit"
           >
-            <i className="fas fa-info-circle"></i>
+            <i className="fas fa-info-circle" />
           </Button>
         </FormHelperText>
       </FormControl>
@@ -155,6 +156,7 @@ const Tax = props => {
       </FormControl>
       <div className={classes.buttonBox}>
         <Button
+          id="submitBtn"
           type="submit"
           variant="raised"
           color="primary"
@@ -163,7 +165,7 @@ const Tax = props => {
           開始計算
         </Button>
         <Button
-          type="submit"
+          id="resetBtn"
           variant="raised"
           disabled={pristine || submitting}
           onClick={reset}

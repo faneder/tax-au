@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withRoot from '../withRoot';
+import withRootTheme from '../withRootTheme';
 import { withStyles } from '@material-ui/core/styles';
 
 import TaxContainer from './Tax';
@@ -31,4 +31,4 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRoot(withStyles(styles)(App));
+export default withRootTheme(withStyles(styles)(App));

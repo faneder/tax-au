@@ -1,7 +1,7 @@
 import App from './App';
 import NavigationBar from './NavigationBar';
 import TaxContainer from './Tax';
-import { rendererComponent, mountComponent, shallowComponent } from '../test/helpers';
+import { shallowComponent } from '../test/helpers';
 
 describe('App', () => {
   let wrapper;
@@ -11,7 +11,7 @@ describe('App', () => {
   });
 
   it('`App` renders without crashing', () => {
-    shallow(<App />);
+    expect(wrapper.length).toEqual(1);
   });
 
   it('`TaxContainer` renders without crashing', () => {

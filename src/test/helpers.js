@@ -1,32 +1,29 @@
+/* global shallow, mount */
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-
-// const spy = jest.fn();
-const store = createStore(() => ({}));
+import Root from '../Root';
 
 const shallowComponent = (ComponentClass, props = {}, state = {}) => {
   return shallow(
-    <Provider store={store}>
+    <Root>
       <ComponentClass {...props} />
-    </Provider>
-  	);
+    </Root>
+  );
 };
 
 const mountComponent = (ComponentClass, props = {}, state = {}) => {
   return mount(
-    <Provider store={store}>
+    <Root>
       <ComponentClass {...props} />
-    </Provider>
-  	);
+    </Root>
+  );
 };
 
 const rendererComponent = (ComponentClass, props = {}, state = {}) => {
   const tree = renderer.create(
-    <Provider store={store}>
+    <Root>
       <ComponentClass {...props} />
-    </Provider>
+    </Root>
   ).toJSON();
 
   return tree;
