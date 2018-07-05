@@ -67,7 +67,7 @@ describe('Tax Component', () => {
 
     it('the reset function would be called once', () => {
       const actions = setup().actions;
-      const component = shallow(<Tax {...actions}/>);
+      const component = shallow(<Tax {...actions} />);
       const button = component.dive().find('#resetBtn').first();
 
       button.simulate('click');
@@ -77,7 +77,7 @@ describe('Tax Component', () => {
 
     it('the handleSubmit function would be called once', () => {
       const actions = setup().actions;
-      const component = shallow(<Tax {...actions}/>);
+      const component = shallow(<Tax {...actions} />);
       const button = component.dive().find('#submitBtn').first();
 
       button.simulate('click');
@@ -87,7 +87,7 @@ describe('Tax Component', () => {
 
     it('the handleSubmit function would be called once', () => {
       const actions = setup().actions;
-      const component = shallow(<Tax {...actions}/>);
+      const component = shallow(<Tax {...actions} />);
       const button = component.dive().find('#submitBtn').first();
 
       button.simulate('click');

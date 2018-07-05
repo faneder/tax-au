@@ -4,9 +4,9 @@
 
 export default class Tax {
   constructor(options) {
-    if (new.target === Tax) {
-      throw new Error('You cannot instantiate an abstract class!');
-    }
+    // if (new.target === Tax) {
+    //   throw new Error('You cannot instantiate an abstract class!');
+    // }
 
     this.income = this.formatTaxNumber(options.income) || 0;
     this.type = options.type;
