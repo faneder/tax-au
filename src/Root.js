@@ -26,3 +26,5 @@ const Root = props => {
 Root.propTypes = {
   children: PropTypes.node.isRequired,
 }
+
+export default Root;
