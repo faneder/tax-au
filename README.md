@@ -1,12 +1,11 @@
 # Tax Refund Calculator
-## A simple tax calculator is available to help you calculate the tax on your taxable income when you are in Austrlia.
+### A simple tax calculator is available to help you calculate the tax on your taxable income when you are in Austrlia.
 
-## demo [https://tax-australia.firebaseapp.com/](https://tax-australia.firebaseapp.com/) to view it in the browser.
 
-## This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+> demo [https://tax-australia.firebaseapp.com/](https://tax-australia.firebaseapp.com/) to view it in the browser.
+
 
 ## Table of Contents
 
@@ -15,6 +14,11 @@ You can find the most recent version of this guide [here](https://github.com/fac
   - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
+- [Tax types](#tax-types)
+- [M1 Medicare levy reduction or exemption 2017](#M1-Medicare-levy-reduction-or-exemption-2017)
+- [Low income earners](#low-income-earners)
+- [Tax rates](#tax-rates)
+
 
 ## Available Scripts
 
@@ -43,7 +47,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
 
-###### tax type:
+## Tax types:
 - resident
 - non-resident
 
@@ -52,7 +56,7 @@ You are a working holiday maker if you have a visa subclass:
 - 417 (Working Holiday)
 - 462 (Work and Holiday).
 
-###### M1 Medicare levy reduction or exemption 2017
+## M1 Medicare levy reduction or exemption 2017
 This question is about whether you qualify for a Medicare levy reduction or exemption. Australian residents for tax purposes are subject to a Medicare levy of 2.0% of their taxable income unless they qualify for a reduction or exemption.
 
 If you were not an Australian resident for tax purposes for the whole of 2016–17, you are exempt from the Medicare levy.
@@ -61,7 +65,7 @@ A Medicare levy reduction is based on your taxable income. A Medicare levy exemp
 
 The first part of this question deals with Medicare levy reduction. If you are not eligible for a reduction, you will be directed to read the exemption section to see whether you qualify for a Medicare levy exemption.
 
-###### Low income earners
+## Low income earners
 You may be eligible for a tax offset if you are a low-income earner and you are an Australian resident for income tax purposes.
 
 You don't have to claim this offset. We will work it out for you when you lodge your tax return. The offset can only reduce the amount of tax you pay to zero and it does not reduce your Medicare levy.
@@ -82,29 +86,8 @@ The LITO is for lower income earners, and does not have to be specifically claim
 
 [official document](https://www.ato.gov.au/individuals/income-and-deductions/offsets-and-rebates/low-income-earners/).
 
-###### Medicare levy - It is partly funded by taxpayers who pay a Medicare levy of 2% of their taxable income.
-
-Your Medicare levy is reduced if your taxable income is below a certain threshold. In some cases you may not have to pay the levy at all. The thresholds are higher for seniors and pensioners. If your taxable income is above the thresholds, you may still qualify for a reduction based on your family taxable income.
-
-Can I qualify for a Medicare levy reduction?
-In 2016–17 you do not have to pay the Medicare levy if your taxable income is equal to or less than $21,655 ($34,244 for seniors and pensioners entitled to the seniors and pensioners tax offset).
-
-You will pay only part of the Medicare levy if your taxable income is between $21,655 and $27,068 ($34,244 and $42,805 for seniors and pensioners entitled to the seniors and pensioners tax offset).
-
-What if I don't qualify for a Medicare levy reduction?
-In 2016–17 if you are single with no dependants and your taxable income is over $27,069 ($42,806 for seniors and pensioners entitled to the seniors and pensioners tax offset), you do not qualify for a Medicare levy reduction.
-
-You may still qualify for a reduction based on your family taxable income.
-
-If you do not qualify for a reduction in the Medicare levy, you may still qualify for a Medicare levy exemption.
-
-###### Medicare levy reduction for low-income earners
-The tax-free threshold and the Medicare levy
-Most working holiday makers are foreign resident taxpayers. Foreign resident taxpayers are not eligible for the tax-free threshold and do not pay the Medicare levy.
-
-However, if you are on a working holiday visa, but are an Australian resident, you will be eligible for the tax-free threshold in a modified way. The calculation of the tax-free threshold will be affected by any working holiday maker income you earn. The calculation is done in two steps with any working holiday maker income being dealt with first, which effectively reduces your tax-free threshold.
-
-###### Resident tax rates 2017–18
+## Tax rates
+#### Resident tax rates 2017–18
 
 | Taxable income  | Tax on this income |
 | ------------- | ------------- |
@@ -114,8 +97,7 @@ However, if you are on a working holiday visa, but are an Australian resident, y
 | $90,001 – $180,000 | $20,797 plus 37c for each $1 over $90,000 |
 | $180,001 and over | $54,097 plus 45c for each $1 over $180,000 |
 
-
-###### Working holiday maker tax rates 2017–18
+#### Working holiday maker tax rates 2017–18
 
 | Taxable income  | Tax on this income |
 | ------------- | ------------- |
@@ -124,7 +106,15 @@ However, if you are on a working holiday visa, but are an Australian resident, y
 | $87,001 – $ 180,000  | $21,800 plus 37c for each $1 over $87,000 |
 | $180,001 and over  | $56,210 plus 45c for each $1 over $180,000 |
 
-###### Reference:
+## Reference:
 
 - Tax Income Rates [https://www.ato.gov.au/Rates/Individual-income-tax-rates/](https://www.ato.gov.au/Rates/Individual-income-tax-rates/).
 - Australian Taxation Office [remote zone](https://www.ato.gov.au/forms/withholding-declaration---calculating-your-tax-offset/?page=3).
+
+## Todo:
+
+- [x] caculator tax
+- [x] complete the tax in a remote zone
+- [x] improve for seo
+- [ ] Push my commits to GitHub
+- [ ] Open a pull request
