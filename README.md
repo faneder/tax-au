@@ -115,6 +115,5 @@ The LITO is for lower income earners, and does not have to be specifically claim
 
 - [x] caculator tax
 - [x] complete the tax in a remote zone
-- [x] improve for seo
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
+- [ ] improve for seo
+- [ ] add multi-lang
