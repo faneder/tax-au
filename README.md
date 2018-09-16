@@ -1,5 +1,5 @@
 # Tax Refund Calculator
-### A simple tax calculator is available to help you calculate the tax on your taxable income when you are in Austrlia.
+### A simple tax calculator is available to help you calculate the tax on your taxable income when you are in Australia.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
